@@ -30,7 +30,7 @@ class JS {
         
         context.evaluateScript("var console = { log: function(message) { _consoleLog(message) } }")
         let consoleLog: @convention(block) (String) -> Void = { message in
-//            print("console.log: " + message)
+            print("console.log: " + message)
         }
         context.setObject(unsafeBitCast(consoleLog, to: AnyObject.self), forKeyedSubscript: "_consoleLog" as (NSCopying & NSObjectProtocol))
         
@@ -51,8 +51,8 @@ class JS {
             let state = try! State(serializedData: data)
             callback(state)
         }
-        let block2 = JSValue(object: block, in: self.context)!
-        jsAddCallback.call(withArguments: [block2])
+        let wrapped = JSValue(object: block, in: self.context)!
+        jsAddCallback.call(withArguments: [wrapped])
         callback(self.state)
     }
     

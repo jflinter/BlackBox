@@ -32,7 +32,7 @@
 		04B2FD18221DC05200932D19 /* SwiftProtobuf.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftProtobuf.framework; path = BlackBox/Carthage/Build/iOS/SwiftProtobuf.framework; sourceTree = "<group>"; };
 		04B2FD1B221DC13600932D19 /* SwiftProtobuf.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftProtobuf.framework; path = Carthage/Build/iOS/SwiftProtobuf.framework; sourceTree = "<group>"; };
 		04B2FD1D221DC18400932D19 /* blackbox.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = blackbox.pb.swift; sourceTree = "<group>"; };
-		04B2FD2B22226D4600932D19 /* main.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = main.js; path = js/dist/main.js; sourceTree = "<group>"; };
+		04B2FD2B22226D4600932D19 /* main.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = main.js; path = ../../js/dist/main.js; sourceTree = "<group>"; };
 		04B2FD2D2222749D00932D19 /* BBArrayConverter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BBArrayConverter.h; sourceTree = "<group>"; };
 		04B2FD2E2222749D00932D19 /* BBArrayConverter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BBArrayConverter.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -194,18 +194,18 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"$(SRCROOT)/BlackBox/blackbox.proto",
+				"$(SRCROOT)/../blackbox.proto",
+				"$(SRCROOT)/../proto.sh",
 			);
 			name = Proto;
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(SRCROOT)/BlackBox/blackbox.pb.swift",
-				"$(SRCROOT)/BlackBox/js/blackbox_pb.js",
+				"$(SRCROOT)/blackbox.pb.swift",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "protoc -I $SRCROOT --swift_out=$SRCROOT $SRCROOT/BlackBox/blackbox.proto\n";
+			shellScript = "echo \"generating proto as part of xcode build\"\ncd $SRCROOT/.. \n./proto.sh\n";
 		};
 		04B2FD2A221DF09300932D19 /* NPM */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -223,7 +223,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "cd $SRCROOT/BlackBox/js\nnpm run-script build\n";
+			shellScript = "echo \"building js as part of xcode build\"\ncd $SRCROOT/../js\nnpm run-script build\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

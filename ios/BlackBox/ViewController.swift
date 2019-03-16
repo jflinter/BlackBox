@@ -37,11 +37,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             self.tableView.reloadData()
         }
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        (1...100).forEach { i in
-            JS.shared.handleAction(Action.with {
-                $0.type = Action.OneOf_Type.sendMessage("message \(i)")
-            })
-        }
     }
 
 

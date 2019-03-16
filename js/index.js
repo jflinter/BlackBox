@@ -39,15 +39,3 @@ export function handleAction(bytes) {
 }
 
 store.subscribe(() => console.log(store.getState()))
-
-function tmpSendMessage(text) {
-  const make = (obj, fn) => {fn(obj); return obj}
-  let action = make(new Action(), (a) => {
-    a.setSendMessage(text)
-  })
-  store.dispatch(action)
-}
-
-tmpSendMessage("1")
-tmpSendMessage("2")
-tmpSendMessage("3")
