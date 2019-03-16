@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+message State {
+  repeated string messages = 1;
+}
+
+message Action {
+  oneof type {
+    string send_message = 1;
+  }
+}
